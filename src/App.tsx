@@ -1,10 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log('Component mounted');
+    console.log('Env variable:', import.meta.env.VITE_GATEWAY_BASEURL);
+  }, []);
+
+  async function fetchData() {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_GATEWAY_BASEURL}/api/posts`);
+      const data = await response.json();
+      setData(data.message);
+      console.log(data);
+    } catch (error: any) {
+      setError(error.message);
+      console.error('Error fetching data:', error);
+    }
+  }
 
   return (
     <>
@@ -18,12 +36,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => fetchData()}>
+          Get API Data
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        {data && <p>{data}</p>}
+        {error && <p>{error}</p>}
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
