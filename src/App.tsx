@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { config } from './config/config'
 import './App.css'
 
 function App() {
@@ -9,12 +10,12 @@ function App() {
 
   useEffect(() => {
     console.log('Component mounted');
-    console.log('Env variable:', import.meta.env.VITE_GATEWAY_BASEURL);
+    console.log('Config property:', config.GATEWAY_BASEURL);
   }, []);
 
   async function fetchData() {
     try {
-      const response = await fetch(`${import.meta.env.VITE_GATEWAY_BASEURL}/api/posts`);
+      const response = await fetch(`${config.GATEWAY_BASEURL}/api/posts`);
       const data = await response.json();
       setData(data.message);
       console.log(data);
