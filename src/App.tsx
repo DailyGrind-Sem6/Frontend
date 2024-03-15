@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     console.log('Component mounted');
-    console.log('Config property:', config.GATEWAY_BASEURL);
+    console.log('ENVIRONMENT VARS:', import.meta.env);
   }, []);
 
   async function fetchData() {
