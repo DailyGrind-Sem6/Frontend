@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     console.log('Component mounted');
-    console.log('ENVIRONMENT VARS:', import.meta.env);
+    console.log('ENVIRONMENT VAR:', process.env.VITE_GATEWAY_BASEURL);
   }, []);
 
   async function fetchData() {
