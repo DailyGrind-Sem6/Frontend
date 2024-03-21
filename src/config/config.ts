@@ -1,3 +1,3 @@
 export const config = {
-    GATEWAY_BASEURL: 'http://api-gateway:8080',
+    GATEWAY_BASEURL: 'http://127.0.0.1:8080',
 };
