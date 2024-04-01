@@ -2,7 +2,7 @@ import Logo from '../general/Logo'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function Navbar(): JSX.Element {
-    const { loginWithRedirect, user, isAuthenticated } = useAuth0();
+    const { loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0();
 
     if (isAuthenticated) console.log("USER: " + JSON.stringify(user))
 
@@ -29,7 +29,13 @@ function Navbar(): JSX.Element {
                         <a className="font-semibold text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Work</a>
                         <a className="font-semibold text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Blog</a>
 
-                        {isAuthenticated ? (
+                        {isLoading ? (
+                            <button type="button" className="flex justify-center items-center size-[46px] text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <span className="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full" role="status" aria-label="loading">
+                                    <span className="sr-only">Loading...</span>
+                                </span>
+                            </button>
+                        ) : isAuthenticated ? (
                             <img className="inline-block size-8 rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description" />
                         ) : (
                             <a onClick={() => loginWithRedirect()} className="flex items-center gap-x-2 font-semibold text-gray-500 hover:text-blue-600 hover:cursor-pointer sm:border-s sm:border-gray-300 sm:my-6 sm:ps-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500">
