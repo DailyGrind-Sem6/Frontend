@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {},
+    colors: {
+      'dark': '#242424'
+    },
   },
   plugins: [
     require('preline/plugin'),
