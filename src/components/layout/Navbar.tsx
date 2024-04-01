@@ -2,7 +2,7 @@ import Logo from '../general/Logo'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function Navbar(): JSX.Element {
-    const { loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0();
+    const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
 
     if (isAuthenticated) console.log("USER: " + JSON.stringify(user))
 
@@ -36,7 +36,14 @@ function Navbar(): JSX.Element {
                                 </span>
                             </button>
                         ) : isAuthenticated ? (
-                            <img className="inline-block size-8 rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description" />
+                            <>
+                                <img className="inline-block size-8 rounded-full" src={user?.picture} alt="Image Description" />
+
+                                <a onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} className="flex items-center gap-x-2 font-semibold text-gray-500 hover:text-blue-600 hover:cursor-pointer sm:border-s sm:border-gray-300 sm:my-6 sm:ps-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500">
+                                    <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                                    Log out
+                                </a>
+                            </>
                         ) : (
                             <a onClick={() => loginWithRedirect()} className="flex items-center gap-x-2 font-semibold text-gray-500 hover:text-blue-600 hover:cursor-pointer sm:border-s sm:border-gray-300 sm:my-6 sm:ps-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500">
                                 <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
