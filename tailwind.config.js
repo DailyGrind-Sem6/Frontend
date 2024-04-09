@@ -6,10 +6,15 @@ export default {
     "node_modules/preline/dist/*.js",
   ],
   theme: {
-    extend: {},
-    colors: {
-      'dark': '#242424'
+    extend: {
+      colors: {
+        'dark': '#242424',
+        'dark-50': '#2f2f2f',
+        'dark-100': '#1a1a1a',
+        'dark-200': '#0f0f0f'
+      },
     },
+    
   },
   plugins: [
     require('preline/plugin'),

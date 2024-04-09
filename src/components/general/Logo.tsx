@@ -1,13 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import whiteLogo from '../../assets/white_logo.svg';
 import blackLogo from '../../assets/black_logo.svg';
 
 function Logo(): JSX.Element {
-    const [darkMode, setDarkMode] = useState<boolean>(true);
+    const [darkMode, setDarkMode] = useState<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-        setDarkMode(event.matches);
-    });
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const handleChange = (event: MediaQueryListEvent) => {
+            setDarkMode(event.matches);
+        };
+
+        mediaQuery.addEventListener('change', handleChange);
+
+        // Cleanup function
+        return () => {
+            mediaQuery.removeEventListener('change', handleChange);
+        };
+    }, []);
 
     return (
         <img

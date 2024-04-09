@@ -7,7 +7,7 @@ function Navbar(): JSX.Element {
     if (isAuthenticated) console.log("USER: " + JSON.stringify(user))
 
     return (
-        <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-3 sm:py-0 dark:bg-slate-900">
+        <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-3 sm:py-0 dark:bg-dark">
             <nav className="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
                 <div className="flex items-center justify-between">
                     <Logo />
