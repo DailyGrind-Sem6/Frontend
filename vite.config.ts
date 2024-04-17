@@ -5,11 +5,7 @@ import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), ImportMetaEnvPlugin.vite({
-      example: ".env.example",
-      env: ".env"
-    }),
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
