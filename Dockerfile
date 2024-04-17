@@ -8,15 +8,7 @@ RUN npm install
 
 COPY . .
 
-COPY .env .env
-
 RUN npm run build
-
-RUN rm .env
-
-# EXPOSE 3000
-
-# CMD [ "npm", "run", "preview", "--", "--host", "0.0.0.0" ]
 
 # Use Nginx as the production server
 FROM nginx:alpine
