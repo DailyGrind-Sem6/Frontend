@@ -17,7 +17,7 @@ function Card({ post }: CardProps) {
                 </div>
                 <div className="flex-1">
                     <div>
-                        <a href="/w3tsa" className="block font-medium text-gray-900 dark:text-gray-100">Coding Jitsu</a>
+                        <a href="/w3tsa" className="block font-medium text-gray-900 dark:text-gray-100">Coffee Connoisseur</a>
                         <a href="/w3tsa/next-js-14-setting-up-your-database-4ank" className="block text-xs text-gray-600 dark:text-gray-400">Mar 20 (2 days ago)</a>
                     </div>
                 </div>
@@ -28,10 +28,10 @@ function Card({ post }: CardProps) {
                         <a href="/w3tsa/next-js-14-setting-up-your-database-4ank">{post.title}</a>
                     </h3>
                     <div className="flex space-x-2">
-                        <a href="/t/webdev" className="text-sm dark:text-gray-300">#webdev</a>
-                        <a href="/t/nextjs" className="text-sm dark:text-gray-300">#nextjs</a>
-                        <a href="/t/database" className="text-sm dark:text-gray-300">#database</a>
-                        <a href="/t/vercel" className="text-sm dark:text-gray-300">#vercel</a>
+                        <a href="/" className="text-sm dark:text-gray-300">#coffee</a>
+                        <a href="/" className="text-sm dark:text-gray-300">#beans</a>
+                        <a href="/" className="text-sm dark:text-gray-300">#article</a>
+                        <a href="/" className="text-sm dark:text-gray-300">#secretsauce</a>
                     </div>
                 </div>
                 <div className="flex items-center justify-between">
