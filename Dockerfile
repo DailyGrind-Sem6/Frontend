@@ -1,3 +1,4 @@
+# Use Node.js 21 Alpine as the build stage
 FROM node:21-alpine AS build
 
 WORKDIR /app
@@ -7,6 +8,9 @@ COPY package.json .
 RUN npm install
 
 COPY . .
+
+# Copy the .env file to the /app directory
+COPY .env /app/
 
 RUN npm run build
 

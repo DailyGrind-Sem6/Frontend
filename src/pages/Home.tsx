@@ -1,4 +1,3 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import Card from '../components/posts/Card';
 
@@ -22,19 +21,10 @@ function Home(): JSX.Element {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const { getAccessTokenSilently, isAuthenticated } = useAuth0();
-
     async function getData() {
-        if (isAuthenticated) await getAccessTokenSilently();
-        
         setIsLoading(true);
         try {
-            const response = await fetch('/api/posts', {
-                headers: {
-                    Authorization: `Bearer ${await getAccessTokenSilently()}`,
-                },
-            }
-            );
+            const response = await fetch('/api/posts');
             const contentType = response.headers.get("content-type");
             if (contentType && contentType.indexOf("application/json") !== -1) {
                 const data = await response.json();
