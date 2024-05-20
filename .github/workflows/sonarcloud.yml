@@ -41,7 +41,7 @@ jobs:
             -Dsonar.projectKey=Gokay-Atalay-Sem6_Frontend
             -Dsonar.organization=software-advanced-sem6
 
-  deploy:
+  deploy_to_Azure:
     name: Deploy app to Azure
     permissions:
         actions: read
